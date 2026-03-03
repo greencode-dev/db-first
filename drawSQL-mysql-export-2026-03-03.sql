@@ -1,22 +1,31 @@
 CREATE TABLE `cars`(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `brand` VARCHAR(50) NOT NULL,
-    `model` VARCHAR(100) NOT NULL,
-    `type` VARCHAR(100) NOT NULL,
-    `mileage` INT NOT NULL,
-    `year` SMALLINT NOT NULL,
-    `fuel_type` VARCHAR(20) NOT NULL,
-    `engine_displacement` INT NOT NULL,
-    `horsepower` INT NOT NULL,
-    `emission_class` VARCHAR(50) NOT NULL,
-    `trasmission` VARCHAR(20) NOT NULL,
-    `doors_number` TINYINT NOT NULL,
-    `exterior_color` VARCHAR(30) NOT NULL,
-    `interior_material` VARCHAR(255) NULL,
-    `owners_count` TINYINT NULL,
-    `vin` VARCHAR(17) NULL,
-    `is_accident_free` VARCHAR(255) NULL,
-    `plate_number` VARCHAR(7) NULL,
-    `main_image` VARCHAR(255) NULL,
-    `price` DECIMAL(10, 2) NOT NULL
+    `brand` VARCHAR(50) NOT NULL COMMENT 'Marca (es: Mercedes-Benz, Lamborghini)',
+    `model` VARCHAR(100) NOT NULL COMMENT 'Modello completo (es: Golf VIII 2.0 GTI Performance)',
+    `type` VARCHAR(30) NOT NULL COMMENT 'Categoria Veicolo (es: SUV, Berlina, Station Wagon, City car)',
+    `mileage` INT UNSIGNED NOT NULL COMMENT 'Chilometraggio',
+    `year` SMALLINT UNSIGNED NOT NULL COMMENT 'Anno di Immatricolazione',
+    `fuel_type` VARCHAR(20) NOT NULL COMMENT 'Carburante (es: Benzina, Ibrida, GPL)',
+    `engine_displacement` INT UNSIGNED NOT NULL COMMENT 'Cilindrata (es. 1600)',
+    `horsepower` INT UNSIGNED NOT NULL COMMENT 'Cavalli Vapore o kW',
+    `emission_class` VARCHAR(50) NOT NULL COMMENT 'Classe ambientale (es: Euro 6d-Temp)',
+    `trasmission` VARCHAR(20) NOT NULL COMMENT 'Cambio (Manuale o Automatico)',
+    `doors_number` TINYINT UNSIGNED NOT NULL COMMENT 'Numero Porte (es: 3 o 5)',
+    `exterior_color` VARCHAR(30) NOT NULL COMMENT 'Colore della Carrozzeria (es: Grigio Antracite)',
+    `interior_material` VARCHAR(255) NULL COMMENT 'Materiali Interni (es: Pelle, alcantara o tessuto)',
+    `owners_count` TINYINT UNSIGNED NULL COMMENT 'Numero di precedenti proprietari',
+    `vin` VARCHAR(17) NULL COMMENT 'Vehicle Identification Number o Numero di Telaio',
+    `is_accident_free` BOOLEAN NULL COMMENT 'Indica se l\'auto è sinistrata',
+    `plate_number` VARCHAR(7) NULL COMMENT 'Targa del Veicolo',
+    `main_image` VARCHAR(255) NULL COMMENT 'URL della foto principale dell\'auto',
+    `price` DECIMAL(10, 2) NOT NULL,
+    `is_available` BOOLEAN NOT NULL DEFAULT 1 COMMENT 'Serve a nascondere l\'inserzione se il veicolo viene venduto'
 );
+ALTER TABLE
+    `cars` ADD INDEX `cars_brand_index`(`brand`);
+ALTER TABLE
+    `cars` ADD INDEX `cars_type_index`(`type`);
+ALTER TABLE
+    `cars` ADD UNIQUE `cars_vin_unique`(`vin`);
+ALTER TABLE
+    `cars` ADD UNIQUE `cars_plate_number_unique`(`plate_number`);
