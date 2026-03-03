@@ -12,14 +12,16 @@ CREATE TABLE `cars`(
     `trasmission` VARCHAR(20) NOT NULL COMMENT 'Cambio (Manuale o Automatico)',
     `doors_number` TINYINT UNSIGNED NOT NULL COMMENT 'Numero Porte (es: 3 o 5)',
     `exterior_color` VARCHAR(30) NOT NULL COMMENT 'Colore della Carrozzeria (es: Grigio Antracite)',
-    `interior_material` VARCHAR(255) NULL COMMENT 'Materiali Interni (es: Pelle, alcantara o tessuto)',
+    `interior_material` VARCHAR(255) NULL COMMENT 'Tappezzeria (es: Pelle, alcantara o tessuto)',
     `owners_count` TINYINT UNSIGNED NULL COMMENT 'Numero di precedenti proprietari',
     `vin` VARCHAR(17) NULL COMMENT 'Vehicle Identification Number o Numero di Telaio',
-    `is_accident_free` BOOLEAN NULL COMMENT 'Indica se l\'auto è sinistrata',
+    `is_accident_free` BOOLEAN NULL COMMENT 'Stato sinistri (1 = Senza Sinistri, 0 = Con Sinistri)',
     `plate_number` VARCHAR(7) NULL COMMENT 'Targa del Veicolo',
-    `main_image` VARCHAR(255) NULL COMMENT 'URL della foto principale dell\'auto',
-    `price` DECIMAL(10, 2) NOT NULL,
-    `is_available` BOOLEAN NOT NULL DEFAULT 1 COMMENT 'Serve a nascondere l\'inserzione se il veicolo viene venduto'
+    `main_image` VARCHAR(255) NULL COMMENT 'URL foto principale del veicolo',
+    `price` DECIMAL(10, 2) NOT NULL COMMENT 'Prezzo di vendita',
+    `is_available` BOOLEAN NOT NULL DEFAULT 1 COMMENT 'Stato di disponibilità (1 = Disponibile, 0 = Non Disponibile)',
+    `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Data e ora di creazione del record',
+    `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Data e ora dell\'ultima modifica del record'
 );
 ALTER TABLE
     `cars` ADD INDEX `cars_brand_index`(`brand`);
