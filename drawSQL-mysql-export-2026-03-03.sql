@@ -1,0 +1,22 @@
+CREATE TABLE `cars`(
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `brand` VARCHAR(50) NOT NULL,
+    `model` VARCHAR(100) NOT NULL,
+    `type` VARCHAR(100) NOT NULL,
+    `mileage` INT NOT NULL,
+    `year` SMALLINT NOT NULL,
+    `fuel_type` VARCHAR(20) NOT NULL,
+    `engine_displacement` INT NOT NULL,
+    `horsepower` INT NOT NULL,
+    `emission_class` VARCHAR(50) NOT NULL,
+    `trasmission` VARCHAR(20) NOT NULL,
+    `doors_number` TINYINT NOT NULL,
+    `exterior_color` VARCHAR(30) NOT NULL,
+    `interior_material` VARCHAR(255) NULL,
+    `owners_count` TINYINT NULL,
+    `vin` VARCHAR(17) NULL,
+    `is_accident_free` VARCHAR(255) NULL,
+    `plate_number` VARCHAR(7) NULL,
+    `main_image` VARCHAR(255) NULL,
+    `price` DECIMAL(10, 2) NOT NULL
+);
