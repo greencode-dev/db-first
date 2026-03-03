@@ -34,3 +34,6 @@ La tabella principale che contiene i veicoli in vendita.
 _(Immagine esportata da drawSQL)_
 
 ![Schema Database](./schema-database.jpg)
+
+Puoi vedere il diagramma su drawSQL:
+https://drawsql.app/teams/greencode-dev/diagrams/autoscout42
